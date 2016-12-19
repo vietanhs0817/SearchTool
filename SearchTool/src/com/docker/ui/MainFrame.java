@@ -43,7 +43,7 @@ public class MainFrame extends javax.swing.JFrame implements Runnable {
             currentBank = core.bank(f);
             lblStatus.setForeground(Color.BLUE);
             lblStatus.setText(currentBank.entrySet().size() + " quest ");
-        } catch (IOException ex) {
+        } catch (Exception ex) {
             lblStatus.setForeground(Color.red);
             lblStatus.setText("failed!");
         }
@@ -51,7 +51,6 @@ public class MainFrame extends javax.swing.JFrame implements Runnable {
 
     public MainFrame() {
         initComponents();
-
         core = new Core(System.getProperty("user.dir"));
         pushInCombobox();
         loadBank();
@@ -211,12 +210,12 @@ public class MainFrame extends javax.swing.JFrame implements Runnable {
 
     private void search(String data) {
         for (Map.Entry<String, String> entry : currentBank.entrySet()) {
-            if (entry.getKey().toLowerCase().contains(data.toLowerCase())){
+            if (entry.getKey().toLowerCase().contains(data.toLowerCase())) {
                 txtFullQuest.setText(entry.getKey());
                 txtAns.setText(entry.getValue());
                 break;
-            }else{
-               
+            } else {
+
             }
         }
     }
